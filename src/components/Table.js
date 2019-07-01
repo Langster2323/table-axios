@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import '../App.css';
+import axios from 'axios';
 
 class Table extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      headers: ["Name", "Email", "City", "Company"]
+      headers: ["Name", "Email", "City", "Company"],
+      data: []
     };
+  }
+  componentDidMount() {
+    axios.get('https://jsonplaceholder.typicode.com/users')
+      .then(res => {
+        console.log(res)
+      })
   }
   render() {
     return (
