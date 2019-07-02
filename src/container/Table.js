@@ -19,8 +19,7 @@ class Table extends Component {
     this.props.loadUser()
   }
   render() {
-    console.log(this.props)
-    const { users } = this.props || []
+    const { users } = this.props
     const tableDataList = users.length ? (
       <TableRow users={users} />
     ) : (
