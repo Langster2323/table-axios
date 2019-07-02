@@ -7,16 +7,38 @@ class Table extends Component {
     super(props);
     this.state = {
       headers: ["Name", "Email", "City", "Company"],
-      data: []
+      tableData: [ ]
     };
   }
   componentDidMount() {
     axios.get('https://jsonplaceholder.typicode.com/users')
       .then(res => {
         console.log(res)
-      })
+        this.setState({
+          tableData: res.data
+        });
+      });
   }
   render() {
+    const { tableData } = this.state
+    const tableDataList = tableData.length ? (
+      tableData.map(tableRow => {
+        return (
+          <div key={tableRow.id}>
+            <tbody>
+              <tr>
+                <td>{tableRow.name}</td>
+                <td>{tableRow.email}</td>
+                <td>{tableRow.city}</td>
+                <td>{tableRow.company}</td>
+              </tr>
+            </tbody>
+          </div>
+        )
+      })
+    ) : (
+      <div>No data yet</div>
+    )
     return (
       <div className="App">
         <table>
@@ -27,6 +49,7 @@ class Table extends Component {
               )}
             </tr>
           </thead>
+          {tableDataList}
         </table>
       </div>
     );
