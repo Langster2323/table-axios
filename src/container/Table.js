@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import '../App.css';
 import TableHeader from '../components/TableHeader';
 import TableRow from '../components/TableRow';
+import { connect } from 'react-redux';
+import * as actionCreators from '../actions/index.js'
 import axios from 'axios';
 
 class Table extends Component {
@@ -39,4 +41,8 @@ class Table extends Component {
   }
 }
 
-export default Table;
+const mapStateToProps=(state)=>{
+  return state
+}
+
+export default connect (mapStateToProps, actionCreators)(Table);
