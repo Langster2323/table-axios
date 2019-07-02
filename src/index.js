@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Table from '../src/components/Table';
+import Table from '../src/container/Table';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<Table />, document.getElementById('root'));

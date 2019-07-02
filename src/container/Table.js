@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css';
+import TableHeader from '../components/TableHeader';
+import TableRow from '../components/TableRow';
 import axios from 'axios';
 
 class Table extends Component {
@@ -22,29 +24,14 @@ class Table extends Component {
   render() {
     const { users } = this.state
     const tableDataList = users.length ? (
-      <tbody>
-      {users.map(user =>
-        <tr key={user.id}>
-          <td>{user.name}</td>
-          <td>{user.email}</td>
-          <td>{user.address.city}</td>
-          <td>{user.company.name}</td>
-        </tr>
-    )}
-    </tbody>
+      <TableRow users={users} />
     ) : (
       <div>No data yet</div>
     )
     return (
       <div className="App">
         <table>
-          <thead>
-            <tr>
-              {this.state.headers.map((header) =>
-                <th>{header}</th>
-              )}
-            </tr>
-          </thead>
+          <TableHeader headers={this.state.headers} />
           {tableDataList}
         </table>
       </div>
