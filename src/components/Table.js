@@ -7,35 +7,31 @@ class Table extends Component {
     super(props);
     this.state = {
       headers: ["Name", "Email", "City", "Company"],
-      tableData: [ ]
+      users: [ ]
     };
   }
   componentDidMount() {
     axios.get('https://jsonplaceholder.typicode.com/users')
       .then(res => {
-        console.log(res)
+        console.log(res);
         this.setState({
-          tableData: res.data
+          users: res.data.slice(0, 4)
         });
       });
   }
   render() {
-    const { tableData } = this.state
-    const tableDataList = tableData.length ? (
-      tableData.map(tableRow => {
-        return (
-          <div key={tableRow.id}>
-            <tbody>
-              <tr>
-                <td>{tableRow.name}</td>
-                <td>{tableRow.email}</td>
-                <td>{tableRow.city}</td>
-                <td>{tableRow.company}</td>
-              </tr>
-            </tbody>
-          </div>
-        )
-      })
+    const { users } = this.state
+    const tableDataList = users.length ? (
+      <tbody>
+      {users.map(user =>
+        <tr key={user.id}>
+          <td>{user.name}</td>
+          <td>{user.email}</td>
+          <td>{user.address.city}</td>
+          <td>{user.company.name}</td>
+        </tr>
+    )}
+    </tbody>
     ) : (
       <div>No data yet</div>
     )
