@@ -1,6 +1,6 @@
 
 
-const mainReducer = (state, action) => {
+const mainReducer = (state={}, action) => {
   if(action.type === "LOAD_USER"){
     return {
       ...state,
@@ -12,5 +12,7 @@ const mainReducer = (state, action) => {
     }
   }
 }
+
+export const getUsers = state => state.user || [];
 
 export default mainReducer;

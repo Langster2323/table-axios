@@ -20,16 +20,16 @@ test('Expect there to be four out of five to show', () => {
 })
 
 
-test('data is shown', () => {
-  return fetchData().then(data => {
-    expect(data).toContain('something');
-  })
-})
+// test('data is shown', () => {
+//   return fetchData().then(data => {
+//     expect(data).toContain('something');
+//   })
+// })
 
 //Promise
-test('User fetched Name shoule be Leanne Graham', () => {
-  expect.assertions(1);
-  return fetchData().then(data => {
-    expect(data.name).toEqual('Leanne Graham');
-  })
-})
+// test('User fetched Name shoule be Leanne Graham', () => {
+//   expect.assertions(1);
+//   return fetchData().then(data => {
+//     expect(data.name).toEqual('Leanne Graham');
+//   })
+// })

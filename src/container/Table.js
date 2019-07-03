@@ -3,32 +3,26 @@ import '../App.css';
 import TableHeader from '../components/TableHeader';
 import TableRow from '../components/TableRow';
 import { connect } from 'react-redux';
-import * as actionCreators from '../actions/index.js'
-import axios from 'axios';
+import * as actionCreators from '../actions/index.js';
+import { getUsers } from '../reducers/index';
 
 class Table extends Component {
   constructor(props) {
     super(props);
     this.state = {
       headers: ["Name", "Email", "City", "Company"],
-      users: [ ]
     };
   }
   componentDidMount() {
-    axios.get('https://jsonplaceholder.typicode.com/users')
-      .then(res => {
-        console.log(res);
-        this.setState({
-          users: res.data.slice(0, 4)
-        });
-      });
+    this.props.loadUser()
   }
   render() {
-    const { users } = this.state
+    console.log(this.props)
+    const { users } = this.props
     const tableDataList = users.length ? (
       <TableRow users={users} />
     ) : (
-      <div>No data yet</div>
+      <tbody><tr><td>No data yet</td></tr></tbody>
     )
     return (
       <div className="App">
@@ -41,8 +35,8 @@ class Table extends Component {
   }
 }
 
-const mapStateToProps=(state)=>{
-  return state
-}
+const mapStateToProps = state => ({
+  users: getUsers(state)
+});
 
 export default connect (mapStateToProps, actionCreators)(Table);

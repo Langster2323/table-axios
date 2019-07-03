@@ -4,8 +4,8 @@ const TableHeader = ({ headers }) => {
   return (
     <thead>
       <tr>
-        {headers.map((header) =>
-          <th>{header}</th>
+        {headers.map((header, idx) =>
+          <th key={idx}>{header}</th>
         )}
       </tr>
     </thead>
