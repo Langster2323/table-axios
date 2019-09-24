@@ -1,10 +1,10 @@
 import React from 'react';
 
-const TableRow = ({ users }) => {
+const TableRow = ({ users, filteredUsers }) => {
   return (
     <tbody>
-    {users.map(user =>
-      <tr key={user.id}>
+    {filteredUsers.map((user, index) =>
+      <tr key={index}>
         <td>{user.name}</td>
         <td>{user.email}</td>
         <td>{user.address.city}</td>
