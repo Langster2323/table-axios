@@ -19,6 +19,12 @@ test('Expect there to be four out of five to show', () => {
   expect(value).toContain('Name', 'Email', 'City', 'Company')
 })
 
+test('Expect Leanne Graham to appear only', () => {
+  const users = [{name: 'Leanne Graham'}, {name: 'Ervin'}, {name: 'Ahkeem'}]
+  const value = users.filter(user => user.name === 'Leanne Graham')
+  expect(value).toEqual([{name: 'Leanne Graham'}])
+})
+
 
 // test('data is shown', () => {
 //   return fetchData().then(data => {
