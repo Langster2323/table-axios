@@ -36,7 +36,7 @@ class Table extends Component {
     return (
       <div className="App">
       <div>
-        <input type="text" value={this.state.search} onChange={this.updateSearch} />
+        <input className="input is-rounded" type="text" value={this.state.search} onChange={this.updateSearch} />
       </div>
         <table className="table is-hoverable is-striped is-fullwidth">
           <TableHeader headers={this.state.headers} />
