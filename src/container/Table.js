@@ -25,7 +25,7 @@ class Table extends Component {
     const { users, search } = this.props
     let filteredUsers = users.filter(
       (user) => {
-        return user.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== 1;
+        return user.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
       }
     );
     const tableDataList = users.length ? (
